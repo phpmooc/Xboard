@@ -1,2 +1,10 @@
 *
 !.gitignore
+!AlipayF2F/
+!BTCPay/
+!Coinbase/
+!CoinPayments/
+!EPay/
+!MGate/
+!Smogate/
+!Telegram/

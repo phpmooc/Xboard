@@ -6,7 +6,7 @@ use App\Services\ThemeService;
 use App\Services\UpdateService;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\DB;
+use App\Services\Plugin\PluginManager;
 
 class XboardUpdate extends Command
 {
@@ -50,6 +50,11 @@ class XboardUpdate extends Command
         $updateService->updateVersionCache();
         $themeService = app(ThemeService::class);
         $themeService->refreshCurrentTheme();
+
+        $this->info('正在检查并安装默认插件...');
+        PluginManager::installDefaultPlugins();
+        $this->info('默认插件检查完成');
+
         $this->info('更新完毕，队列服务已重启，你无需进行任何操作。');
     }
 }
